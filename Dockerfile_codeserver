@@ -1,0 +1,15 @@
+FROM ubuntu
+
+MAINTAINER FOSSEE <pythonsupport@fossee.in>
+
+RUN apt-get update -y && apt-get install  git python3-pip vim libmysqlclient-dev  -y && pip3 install requests tornado six psutil && mkdir -p /Sites/online_test 
+
+VOLUME /Sites/online_test
+
+RUN mkdir -p /Sites/online_test/output /Sites/online_test/yaksh/data
+
+WORKDIR /Sites/online_test
+
+EXPOSE 53579
+
+CMD [ "python3" , "-m" , "yaksh.code_server" ]
