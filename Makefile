@@ -10,8 +10,8 @@ help:
 	@echo "To run containers:"
 	@echo "    make start"
 	@echo ""
-	@echo "You need to do prereq-django to work yaksh:"
-	@echo "    make prereq-django"
+	@echo "You need to create super user in order to work with yaksh:"
+	@echo "    make createsuperuser"
 	@echo ""
 	@echo "Really, really start over:"
 	@echo "    make clean"
@@ -41,7 +41,7 @@ build:
 	@docker-compose build
 	@docker pull mariadb:10.2 
 
-prereq-django: migrate superuser
+createsuperuser: migrate superuser
 
 migrate:
 	@docker exec -it yaksh_django python3 manage.py makemigrations
@@ -55,4 +55,4 @@ superuser:
 tail:
 	@docker-compose logs -f
 
-.PHONY: start stop status restart clean build migrate tail install-dep superuser prereq-django
+.PHONY: start stop status restart clean build migrate tail install-dep superuser createsuperuser

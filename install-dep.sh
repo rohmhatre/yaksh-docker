@@ -4,6 +4,11 @@ then
     echo -e "\nPlease run script as root.\n"
     exit 1
 fi
+echo "Cloning online yaksh from GitHub"
+git clone https://github.com/rohmhatre/online_test.git
+mkdir -p online_test/output online_test/yaksh/data
+chmod -R 777 online_test/output online_test/yaksh/data
+echo "Installing docker and docker-compose"
 sudo apt-get update -y && sudo apt-get install git 
 apt-get update
 apt-get install -y apt-transport-https ca-certificates
@@ -17,6 +22,4 @@ apt-get install -y docker-engine
 service docker start
 sudo curl -o /usr/local/bin/docker-compose -L "https://github.com/docker/compose/releases/download/1.15.0/docker-compose-$(uname -s)-$(uname -m)"
 sudo chmod +x /usr/local/bin/docker-compose
-git clone https://github.com/rohmhatre/online_test.git
-mkdir -p online_test/output online_test/yaksh/data
-chmod -R 777 online_test/output online_test/yaksh/data
+
