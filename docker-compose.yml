@@ -38,7 +38,7 @@ services:
 
 
   yaksh-db:
-    image: mariadb
+    image: mariadb:10.2
     container_name: yaksh_db
     environment:
       MYSQL_ROOT_PASSWORD: root

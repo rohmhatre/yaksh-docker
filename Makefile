@@ -1,17 +1,22 @@
-CURRENT_DIRECTORY := $(shell pwd)
 help:
-	@echo "Docker Compose Help for deploying Yaksh interface"
-	@echo -e "-----------------------\n"
+	@echo "Docker Compose Help for Deploying Yaksh interface"
+	@echo  "-----------------------\n"
 	@echo "Install Dependancies on base machine:"
 	@echo "    make install-dep"
 	@echo ""
 	@echo "Build docker images:"
 	@echo "    make build"
 	@echo ""
+	@echo "To run containers:"
+	@echo "    make start"
+	@echo ""
+	@echo "You need to do prereq-django to work yaksh:"
+	@echo "    make prereq-django"
+	@echo ""
 	@echo "Really, really start over:"
 	@echo "    make clean"
 	@echo ""
-	@echo "See contents of Makefile for more targets."
+	@echo "other utilities:restart,tail,status"
 
 begin: migrate fixtures start
 
@@ -31,20 +36,23 @@ restart: stop start
 
 clean: stop
 	@docker-compose rm --force
-	@find . -name \*.pyc -delete
 
 build:
-	@docker-compose build 
+	@docker-compose build
+	@docker pull mariadb:10.2 
+
+prereq-django: migrate superuser
 
 migrate:
-	@docker exec -it yaksh-django python manage.py makemigrations
-	@docker exec -it yaksh-django python manage.py migrate
+	@docker exec -it yaksh_django python3 manage.py makemigrations
+	@docker exec -it yaksh_django python3 manage.py migrate
 
 superuser:
-	@docker exec -it yaksh-django python manage.py createsuperuser
-	@docker exec -it yaksh-django python manage.py add_group
+	@docker exec -it yaksh_django python3 manage.py createsuperuser
+	@docker exec -it yaksh_django python3 manage.py add_group
+	@docker exec -it yaksh_django python3 manage.py collectstatic
 
 tail:
 	@docker-compose logs -f
 
-.PHONY: start stop status restart clean build migrate tail install-dep superuser
+.PHONY: start stop status restart clean build migrate tail install-dep superuser prereq-django
