@@ -1,7 +1,7 @@
 help:
 	@echo "Docker Compose Help for Deploying Yaksh interface"
 	@echo  "-----------------------\n"
-	@echo "Install Dependancies on base machine:"
+	@echo "Install Dependencies  on base machine:"
 	@echo "    make install-dep"
 	@echo ""
 	@echo "Build docker images:"
