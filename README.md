@@ -17,4 +17,4 @@ Follow steps given below
 	- Really, really start over:
 		$ make clean
 
-See contents of Makefile for more targets.
+other utilities like restart,tail,status
