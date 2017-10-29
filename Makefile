@@ -1,8 +1,8 @@
 help:
 	@echo "Docker Compose Help for Deploying Yaksh interface"
 	@echo  "-----------------------\n"
-	@echo "Install Dependencies  on base machine:"
-	@echo "    make install-dep"
+	@echo "Clone yaksh online interface from github :"
+	@echo "    make clone"
 	@echo ""
 	@echo "Build docker images:"
 	@echo "    make build"
@@ -22,8 +22,8 @@ help:
 
 begin: migrate fixtures start
 
-install-dep:
-	@/bin/bash install-dep.sh
+clone:
+	@/bin/bash clone-yaksh.sh
 
 start:
 	@docker-compose up -d
@@ -58,4 +58,4 @@ superuser:
 tail:
 	@docker-compose logs -f
 
-.PHONY: start stop status restart clean build migrate tail install-dep superuser createsuperuser
+.PHONY: start stop status restart clean build migrate tail clone superuser createsuperuser

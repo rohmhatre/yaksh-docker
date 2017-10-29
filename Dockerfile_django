@@ -7,7 +7,7 @@ VOLUME /Sites/online_test
 
 ADD ./online_test/requirements/requirements-* /tmp/
 
-RUN cd /Sites/online_test && pip3 install -r /tmp/requirements-py3.txt && chown -R www-data /Sites && chmod -R 664 /Sites && chmod -R +X /Sites
+RUN cd /Sites/online_test && pip3 install -r /tmp/requirements-py3.txt 
 
 ADD Files/000-default.conf /etc/apache2/sites-enabled/
 

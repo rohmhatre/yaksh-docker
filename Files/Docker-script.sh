@@ -16,4 +16,8 @@ if [ ! -z $DB_PORT ]; then  sed -i '/DB_PORT/d' $PROJECT_DIR/online_test/local.p
 
 if [ ! -z $CODE_SERVER_HOST ]; then  sed -i '/CODE_SERVER_HOST/d' $PROJECT_DIR/yaksh/local.py && echo "CODE_SERVER_HOST=\"$CODE_SERVER_HOST\"" >> $PROJECT_DIR/yaksh/local.py; fi
 
+chown -R www-data /Sites  
+chmod -R 664 /Sites
+chmod -R +X /Sites
+
 /usr/sbin/apache2ctl -D FOREGROUND
