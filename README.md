@@ -1,7 +1,20 @@
 To Deploying Yaksh Interface using Docker Compose
 
-Please chage directory to yaksh-docker directory and use root user
+Follow steps given below
 
-follow steps given in 
 
-#make help
+#### Docker Compose Help for deploying Yaksh interface
+
+	- To get help while deployment
+		$ make help
+
+	- Install Dependancies on base machine:
+		$ make install-dep
+
+	- Build docker images:
+		$ make build
+
+	- Really, really start over:
+		$ make clean
+
+See contents of Makefile for more targets.
