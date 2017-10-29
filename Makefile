@@ -10,7 +10,7 @@ help:
 	@echo "To run containers:"
 	@echo "    make start"
 	@echo ""
-	@echo "You need to create super user in order to work with yaksh:"
+	@echo "You need to create super a user to work with yaksh:"
 	@echo "    make createsuperuser"
 	@echo ""
 	@echo "Now Your interface is ready. You can access it using browser just go to http://localhost:8000"
