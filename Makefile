@@ -13,6 +13,8 @@ help:
 	@echo "You need to create super user in order to work with yaksh:"
 	@echo "    make createsuperuser"
 	@echo ""
+	@echo "Now Your interface is ready. You can access it using browser just go to http://localhost:8000"
+	@echo ""
 	@echo "Really, really start over:"
 	@echo "    make clean"
 	@echo ""
@@ -51,6 +53,7 @@ superuser:
 	@docker exec -it yaksh_django python3 manage.py createsuperuser
 	@docker exec -it yaksh_django python3 manage.py add_group
 	@docker exec -it yaksh_django python3 manage.py collectstatic
+	@echo "You can access it using browser, just go to http://localhost:8000"
 
 tail:
 	@docker-compose logs -f
