@@ -1,10 +1,10 @@
-####Pre-Requisites
+#### Pre-Requisites
 
 	1. Fresh installed ubuntu 16.04.
 	2. root user permissions to run commands.
 
 
-####Help for deploying Yaksh interface.
+#### Help for deploying Yaksh interface.
 
 	- To get help while deployment
 		$ make help
