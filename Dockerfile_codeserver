@@ -2,14 +2,18 @@ FROM ubuntu:16.04
 
 MAINTAINER FOSSEE <pythonsupport@fossee.in>
 
-RUN apt-get update -y && apt-get install  git python3-pip vim libmysqlclient-dev  -y && pip3 install requests tornado six psutil && mkdir -p /Sites/online_test 
+RUN apt-get update -y && apt-get install  git python3-pip vim libmysqlclient-dev  -y 
 
-VOLUME /Sites/online_test
+RUN pip3 install requests tornado six psutil && mkdir -p /Sites/online_test/output /Sites/online_test/yaksh/data
 
-RUN mkdir -p /Sites/online_test/output /Sites/online_test/yaksh/data
+VOLUME /Sites/online_test/output
+
+VOLUME /Sites/online_test/yaksh/data
 
 WORKDIR /Sites/online_test
 
+ADD Files/Start-codeserver.sh /Sites
+
 EXPOSE 53579
 
-CMD [ "python3" , "-m" , "yaksh.code_server" ]
+CMD [ "/bin/bash" , "/Sites/Start-codeserver.sh" ]

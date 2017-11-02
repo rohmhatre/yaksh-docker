@@ -33,7 +33,8 @@ services:
     image: yaksh.codeserver
     container_name: yaksh_codeserver
     volumes:
-      - ./online_test:/Sites/online_test
+      - ./online_test/output:/Sites/online_test/output
+      - ./online_test/yaksh/data:/Sites/online_test/yaksh/output
     restart: always 
 
 
